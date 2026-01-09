@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#1f5b2a" />
+  <title>Convite • 1 ano do João Davi</title>
+
+  <style>
+    :root{
+      /* Safari clean + infantil */
+      --bg1:#fbf6ea;   /* areia bem clara */
+      --bg2:#ffffff;   /* branco */
+      --card:#ffffff;
+
+      --txt:#1b2b22;
+      --muted:#5b6b63;
+
+      --leaf:#2f7a3a;
+      --leaf2:#1f5b2a;
+      --gold:#d2a94a;
+      --sand:#e9d8b3;
+
+      --line: rgba(27,43,34,.12);
+      --radius:18px;
+      --shadow: 0 12px 28px rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--txt);
+      /* fonte “infantil” sem baixar nada */
+      font-family: ui-rounded, "Comic Sans MS", "Trebuchet MS", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:
+        radial-gradient(900px 600px at 15% 0%, rgba(47,122,58,.10) 0%, transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(210,169,74,.12) 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    /* Confete/folhinhas bem leve (CSS only) */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.26;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(47,122,58,.22) 0 2px, transparent 3px),
+        radial-gradient(circle at 22% 32%, rgba(210,169,74,.22) 0 2px, transparent 3px),
+        radial-gradient(circle at 34% 12%, rgba(47,122,58,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 46% 26%, rgba(210,169,74,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 58% 16%, rgba(47,122,58,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 30%, rgba(210,169,74,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 82% 14%, rgba(47,122,58,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 92% 28%, rgba(210,169,74,.18) 0 2px, transparent 3px),
+
+        radial-gradient(circle at 16% 70%, rgba(47,122,58,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 28% 84%, rgba(210,169,74,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 40% 74%, rgba(47,122,58,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 52% 88%, rgba(210,169,74,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 64% 72%, rgba(47,122,58,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 76% 86%, rgba(210,169,74,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 88% 76%, rgba(47,122,58,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 96% 90%, rgba(210,169,74,.18) 0 2px, transparent 3px);
+      filter: saturate(1.05);
+      transform: translateZ(0);
+      animation: drift 18s linear infinite;
+    }
+    @keyframes drift{
+      0%{ transform: translate3d(0,0,0) }
+      50%{ transform: translate3d(-10px, 8px, 0) }
+      100%{ transform: translate3d(0,0,0) }
+    }
+
+    .wrap{max-width:860px; margin:0 auto; padding:18px 14px 60px; position:relative}
+
+    /* HERO */
+    .hero{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-top{
+      padding:18px 18px 8px;
+      position:relative;
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(47,122,58,.22);
+      background: rgba(47,122,58,.08);
+      color: var(--leaf2);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+
+    .title{
+      margin:10px 0 6px;
+      font-size:34px;
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .hero-banner{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      background: linear-gradient(135deg, rgba(47,122,58,.10), rgba(210,169,74,.14));
+      border:1px dashed rgba(47,122,58,.28);
+      border-radius: 18px;
+      padding:12px 12px;
+    }
+
+    .banner-text{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width: 0;
+    }
+    .banner-text b{
+      font-size:16px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .banner-text span{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Faixa de ilustrações (SVG) */
+    .hero-illustrations{
+      border-top:1px solid var(--line);
+      background: linear-gradient(180deg, #fff, rgba(233,216,179,.18));
+      padding: 6px 10px 10px;
+    }
+    .illus-row{
+      display:flex;
+      gap:10px;
+      align-items:flex-end;
+      justify-content:space-between;
+      overflow:hidden;
+    }
+    .illus{
+      width: 100%;
+      max-width: 270px;
+      height:auto;
+      opacity:.95;
+    }
+    .illus.small{ max-width: 220px; opacity:.9 }
+
+    /* LAYOUT */
+    .grid{display:grid; gap:14px; margin-top:14px}
+    @media (min-width:820px){
+      .grid{grid-template-columns: 1.1fr .9fr}
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .card h2{margin:0 0 10px; font-size:16px}
+    .muted{color:var(--muted); font-size:13px; margin:0}
+
+    .field{
+      width:100%;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      outline:none;
+      font-size:14px;
+    }
+    .field:focus{ border-color: rgba(47,122,58,.45) }
+    .field.small{width: 220px}
+    @media (max-width:520px){ .field.small{width:100%} }
+
+    .row{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--txt);
+      font-weight:900;
+      padding:12px 14px;
+      border-radius:14px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
+      user-select:none;
+    }
+    .btn:hover{ background: rgba(47,122,58,.06) }
+    .btn:active{ transform: translateY(1px) }
+    .btn.primary{
+      border:0;
+      color:#fff;
+      background: linear-gradient(135deg, var(--leaf), rgba(210,169,74,.75));
+      box-shadow: 0 10px 22px rgba(47,122,58,.18);
+    }
+    .btn.primary:hover{ box-shadow: 0 14px 28px rgba(47,122,58,.22) }
+
+    .divider{height:1px; background:var(--line); border:0; margin:12px 0}
+
+    /* Presentes */
+    .gift{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border:1px dashed rgba(47,122,58,.35);
+      border-radius:16px;
+      background: rgba(47,122,58,.05);
+    }
+    .gift .icon{
+      width:38px; height:38px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background: rgba(210,169,74,.18);
+      border:1px solid rgba(210,169,74,.35);
+      flex: 0 0 auto;
+      font-size:18px;
+    }
+    .gift ul{margin:6px 0 0 18px; color:var(--muted); font-size:13px}
+    .gift li{margin:6px 0}
+
+    /* Endereço clicável */
+    .addr{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--txt);
+      text-decoration:none;
+      font-weight:800;
+      transition: background .2s ease;
+      margin-top:10px;
+    }
+    .addr:hover{ background: rgba(47,122,58,.06) }
+    .addr small{
+      display:block;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    /* Mapa (opcional manter embed) */
+    iframe{width:100%; height:310px; border:0; border-radius:16px}
+
+    /* Toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:16px;
+      transform:translateX(-50%);
+      background:#1f5b2a;
+      color:#fff;
+      padding:11px 14px;
+      border-radius:999px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+      display:none;
+      font-size:13px;
+      z-index:50;
+    }
+
+    /* Modal “Obrigado!” */
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      background: rgba(0,0,0,.28);
+      z-index:60;
+    }
+    .thanks{
+      width:min(520px, 100%);
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 22px 65px rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    .thanks-top{
+      padding:16px 16px 10px;
+      background: linear-gradient(135deg, rgba(47,122,58,.10), rgba(210,169,74,.16));
+      border-bottom: 1px solid rgba(27,43,34,.10);
+    }
+    .thanks-top h3{
+      margin:0;
+      font-size:18px;
+    }
+    .thanks-top p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .thanks-body{
+      padding:14px 16px 16px;
+    }
+    .thanks-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(47,122,58,.06);
+      border: 1px dashed rgba(47,122,58,.28);
+      color: var(--muted);
+      font-weight:800;
+      font-size:12px;
+    }
+    .thanks-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .thanks .btn{ width:100% }
+    @media (min-width:520px){
+      .thanks .btn{ width:auto }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-top">
+        <div class="badge">🦁🌿 Tema Safari</div>
+        <h1 class="title">1 aninho do João Davi</h1>
+        <p class="subtitle">Vamos comemorar esse dia especial com uma aventura na selva! 🐘🦒</p>
+
+        <div class="hero-banner" aria-label="Banner do convite">
+          <div class="banner-text">
+            <b>João Davi • 1 ano 🎂</b>
+            <span>Confirme sua presença para ajudar na organização 💚</span>
+          </div>
+
+          <!-- Balãozinho SVG leve -->
+          <svg width="74" height="46" viewBox="0 0 74 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 34c-8 0-14-6-14-14S12 6 20 6s14 6 14 14-6 14-14 14Z" fill="rgba(210,169,74,.55)"/>
+            <path d="M54 38c-9 0-16-7-16-16S45 6 54 6s16 7 16 16-7 16-16 16Z" fill="rgba(47,122,58,.45)"/>
+            <path d="M20 34c3 4 7 6 12 6" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M54 38c2 4 6 6 10 6" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="chips">
+          <div class="chip">📅 <span id="eventDateText"></span></div>
+          <div class="chip">🕔 <span id="eventTimeText"></span></div>
+          <div class="chip">📍 <span id="eventPlaceText"></span></div>
+        </div>
+      </div>
+
+      <!-- Ilustrações safari (SVG inline) -->
+      <div class="hero-illustrations">
+        <div class="illus-row">
+          <!-- Girafinha -->
+          <svg class="illus small" viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="220" height="90" fill="none"/>
+            <path d="M32 74c18-10 30-10 48 0" stroke="rgba(47,122,58,.25)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M70 70V26c0-10 8-18 18-18h10c10 0 18 8 18 18v44" fill="rgba(233,216,179,.95)" stroke="rgba(27,43,34,.20)" stroke-width="2"/>
+            <path d="M98 20c0-6 5-11 11-11s11 5 11 11v8H98v-8Z" fill="rgba(210,169,74,.45)"/>
+            <circle cx="104" cy="24" r="2.2" fill="#1b2b22"/>
+            <circle cx="119" cy="24" r="2.2" fill="#1b2b22"/>
+            <path d="M110 30c4 4 8 4 12 0" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="85" cy="38" r="4" fill="rgba(210,169,74,.55)"/>
+            <circle cx="125" cy="44" r="4" fill="rgba(210,169,74,.55)"/>
+            <circle cx="100" cy="52" r="4" fill="rgba(210,169,74,.55)"/>
+            <path d="M75 80h25M120 80h25" stroke="rgba(27,43,34,.25)" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Leãozinho -->
+          <svg class="illus" viewBox="0 0 270 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="270" height="90" fill="none"/>
+            <path d="M34 74c30-14 70-14 100 0" stroke="rgba(47,122,58,.25)" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="168" cy="52" r="22" fill="rgba(210,169,74,.40)" stroke="rgba(27,43,34,.18)" stroke-width="2"/>
+            <circle cx="168" cy="52" r="30" fill="rgba(210,169,74,.18)"/>
+            <circle cx="168" cy="52" r="14" fill="rgba(233,216,179,.95)" stroke="rgba(27,43,34,.16)" stroke-width="2"/>
+            <circle cx="163" cy="50" r="2.2" fill="#1b2b22"/>
+            <circle cx="173" cy="50" r="2.2" fill="#1b2b22"/>
+            <path d="M166 56c2 2 4 2 6 0" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M162 60c4 4 8 4 12 0" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="144" cy="46" r="6" fill="rgba(210,169,74,.32)"/>
+            <circle cx="192" cy="46" r="6" fill="rgba(210,169,74,.32)"/>
+            <path d="M118 76h25M192 76h25" stroke="rgba(27,43,34,.25)" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Elefantinho -->
+          <svg class="illus small" viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="220" height="90" fill="none"/>
+            <path d="M140 74c18-10 30-10 48 0" stroke="rgba(47,122,58,.25)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M70 70c0-22 18-40 40-40h22c22 0 40 18 40 40v6H70v-6Z" fill="rgba(180,205,210,.55)" stroke="rgba(27,43,34,.18)" stroke-width="2"/>
+            <path d="M152 58c10 0 18 8 18 18v4h-14" fill="rgba(180,205,210,.55)" stroke="rgba(27,43,34,.18)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="121" cy="52" r="2.2" fill="#1b2b22"/>
+            <circle cx="136" cy="52" r="2.2" fill="#1b2b22"/>
+            <path d="M124 60c4 3 7 3 11 0" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M85 58c-10 0-18 8-18 18v4h16" fill="rgba(180,205,210,.55)" stroke="rgba(27,43,34,.18)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M85 78h20M150 78h20" stroke="rgba(27,43,34,.25)" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <div class="grid">
+      <!-- RSVP -->
+      <section class="card" id="rsvp">
+        <h2>✅ Confirmação de presença</h2>
+        <p class="muted">É rapidinho — a confirmação vai direto para nossa planilha 💚</p>
+
+        <div style="margin-top:10px">
+          <input class="field" id="guestName" placeholder="Seu nome (obrigatório)" autocomplete="name" />
+        </div>
+
+        <div class="row">
+          <input class="field small" id="guestCount" type="number" min="0" inputmode="numeric" placeholder="Acompanhantes (opcional)" />
+        </div>
+
+        <div class="row">
+          <button class="btn primary" id="btnYes">Confirmado 🎉</button>
+          <button class="btn" id="btnNo">Não poderei ir 😢</button>
+        </div>
+
+        <hr class="divider" />
+        <p class="muted" id="rsvpStatus">Nenhuma resposta enviada ainda.</p>
+      </section>
+
+      <!-- Presentes -->
+      <section class="card">
+        <h2>🎁 Sugestões de presente</h2>
+
+        <div class="gift">
+          <div class="icon">🧸</div>
+          <div>
+            <p class="muted" style="margin:0">
+              Se quiser presentear, aqui vão algumas ideias:
+            </p>
+            <ul>
+              <li><b>Roupas:</b> tamanho <b>3 anos</b></li>
+              <li><b>Sapato/Tênis:</b> número <b>19</b></li>
+              <li><b>Brinquedos:</b> educativos, blocos de montar, livrinhos</li>
+              <li><b>Safari:</b> bichinhos, pelúcias, quebra-cabeça</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:10px">
+          O mais importante é sua presença 💚
+        </p>
+      </section>
+    </div>
+
+    <!-- LOCAL -->
+    <section class="card" style="margin-top:14px">
+      <h2>📍 Local</h2>
+      <p class="muted" style="margin-top:-2px">Toque no endereço para abrir no Maps:</p>
+
+      <a class="addr" id="addrLink" target="_blank" rel="noreferrer">
+        🗺️ Espaço Ana Vitória – Colina Park
+        <span style="display:block; margin-left:8px">
+          <small>Clique para abrir no Maps</small>
+        </span>
+      </a>
+
+      <div style="margin-top:10px">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Espa%C3%A7o%20Ana%20Vit%C3%B3ria%20-%20Colina%20Park&output=embed">
+        </iframe>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Modal Obrigado -->
+  <div class="modal" id="thanksModal" aria-hidden="true">
+    <div class="thanks" role="dialog" aria-modal="true" aria-label="Confirmação enviada">
+      <div class="thanks-top">
+        <h3 id="thanksTitle">Obaaa! 🦁🌿</h3>
+        <p id="thanksSubtitle">Sua confirmação foi enviada com sucesso!</p>
+      </div>
+
+      <div class="hero-illustrations" style="border-top:0; border-bottom:1px solid rgba(27,43,34,.10)">
+        <div class="illus-row">
+          <!-- Mini bichinhos no cartão -->
+          <svg class="illus small" viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="220" height="90" fill="none"/>
+            <circle cx="78" cy="50" r="18" fill="rgba(210,169,74,.22)"/>
+            <circle cx="78" cy="50" r="12" fill="rgba(233,216,179,.95)" stroke="rgba(27,43,34,.14)" stroke-width="2"/>
+            <circle cx="74" cy="48" r="2.1" fill="#1b2b22"/>
+            <circle cx="82" cy="48" r="2.1" fill="#1b2b22"/>
+            <path d="M76 54c2 2 4 2 6 0" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+
+            <circle cx="142" cy="52" r="14" fill="rgba(180,205,210,.28)"/>
+            <circle cx="142" cy="52" r="10" fill="rgba(180,205,210,.55)" stroke="rgba(27,43,34,.14)" stroke-width="2"/>
+            <circle cx="138" cy="50" r="2.1" fill="#1b2b22"/>
+            <circle cx="146" cy="50" r="2.1" fill="#1b2b22"/>
+            <path d="M140 56c3 2 5 2 7 0" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+
+          <svg class="illus" viewBox="0 0 270 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="270" height="90" fill="none"/>
+            <path d="M40 72c26-10 60-10 86 0" stroke="rgba(47,122,58,.20)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M150 72c22-10 52-10 74 0" stroke="rgba(47,122,58,.20)" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="180" cy="50" r="20" fill="rgba(47,122,58,.10)"/>
+            <circle cx="180" cy="50" r="14" fill="rgba(233,216,179,.95)" stroke="rgba(27,43,34,.14)" stroke-width="2"/>
+            <circle cx="175" cy="48" r="2.2" fill="#1b2b22"/>
+            <circle cx="185" cy="48" r="2.2" fill="#1b2b22"/>
+            <path d="M176 56c4 3 8 3 12 0" stroke="rgba(27,43,34,.35)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="thanks-body">
+        <div class="thanks-pill" id="thanksPill">📋 Registrado!</div>
+
+        <div class="thanks-actions">
+          <button class="btn primary" id="closeThanks">Fechar</button>
+          <a class="btn" id="openMapsFromThanks" target="_blank" rel="noreferrer">Abrir local no Maps</a>
+        </div>
+
+        <p class="muted" style="margin-top:10px">
+          Vai ser um prazer ter você com a gente 💚
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ================== CONFIG DO EVENTO ==================
+    const EVENT_TITLE = "Aniversário de 1 ano do João Davi";
+    const EVENT_PLACE = "Espaço Ana Vitória - Colina Park";
+    // horário ajustado para 17:00
+    const EVENT_DATETIME_ISO = "2026-02-14T17:00:00-03:00";
+    const MAPS_LINK = "https://maps.app.goo.gl/p1Txpcy7HsGN2Vg59";
+
+    // ================== GOOGLE FORMS (SEU FORM) ==================
+    const FORM_ACTION  = "https://docs.google.com/forms/d/e/1FAIpQLSe6h7nrF_Ghlju65QoBiVRItkUcpKEiya2-2UDF_2AgCWGbrQ/formResponse";
+    const ENTRY_NAME   = "entry.1258025730";
+    const ENTRY_STATUS = "entry.29069718";
+    const ENTRY_GUESTS = "entry.316692936";
+    // =============================================================
+
+    // ---------- UI helpers ----------
+    const toast = (msg) => {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.style.display = "block";
+      clearTimeout(window.__t);
+      window.__t = setTimeout(() => el.style.display = "none", 2600);
+    };
+
+    // ---------- Header fill ----------
+    document.getElementById("eventDateText").textContent =
+      new Date(EVENT_DATETIME_ISO).toLocaleDateString("pt-BR");
+    document.getElementById("eventTimeText").textContent = "17:00"; // fixo como pediu
+    document.getElementById("eventPlaceText").textContent = EVENT_PLACE;
+
+    // endereço clicável
+    const addrLink = document.getElementById("addrLink");
+    addrLink.href = MAPS_LINK;
+
+    // também no modal obrigado
+    document.getElementById("openMapsFromThanks").href = MAPS_LINK;
+
+    // ---------- RSVP -> Google Forms ----------
+    const nameInput = document.getElementById("guestName");
+    const guestsInput = document.getElementById("guestCount");
+    const statusEl = document.getElementById("rsvpStatus");
+    const yesBtn = document.getElementById("btnYes");
+    const noBtn = document.getElementById("btnNo");
+
+    const modal = document.getElementById("thanksModal");
+    const closeThanks = document.getElementById("closeThanks");
+    const thanksPill = document.getElementById("thanksPill");
+    const thanksTitle = document.getElementById("thanksTitle");
+    const thanksSubtitle = document.getElementById("thanksSubtitle");
+
+    function openThanks({name, status, guests}){
+      const guestsTxt = (guests !== "" && guests !== "0")
+        ? ` (+${guests} acompanhante${guests === "1" ? "" : "s"})`
+        : "";
+
+      if(status.includes("Confirmado")){
+        thanksTitle.textContent = "Obaaa! 🦁🌿";
+        thanksSubtitle.textContent = `Te esperamos na nossa festa, ${name}!`;
+      }else{
+        thanksTitle.textContent = "Tudo bem! 💛";
+        thanksSubtitle.textContent = `Obrigado por avisar, ${name}.`;
+      }
+
+      thanksPill.textContent = `✅ ${status}${guestsTxt}`;
+      modal.style.display = "flex";
+      modal.setAttribute("aria-hidden","false");
+    }
+
+    function closeModal(){
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden","true");
+    }
+
+    closeThanks.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && modal.style.display === "flex") closeModal();
+    });
+
+    function sanitizeGuests(v){
+      if(v === "" || v == null) return "";
+      const n = Number(v);
+      if(Number.isNaN(n) || n < 0) return "";
+      return String(Math.floor(n));
+    }
+
+    async function sendToGoogleForms({ name, status, guests }) {
+      const fd = new FormData();
+      fd.append(ENTRY_NAME, name);
+      fd.append(ENTRY_STATUS, status);
+      if (ENTRY_GUESTS) fd.append(ENTRY_GUESTS, guests);
+
+      // mode:no-cors: o Forms registra mesmo sem retorno legível
+      await fetch(FORM_ACTION, { method:"POST", mode:"no-cors", body: fd });
+    }
+
+    async function confirmRSVP(status){
+      const name = nameInput.value.trim();
+      if(!name){
+        toast("Digite seu nome 🙂");
+        nameInput.focus();
+        return;
+      }
+      const guests = sanitizeGuests(guestsInput.value);
+
+      yesBtn.disabled = true; noBtn.disabled = true;
+      yesBtn.style.opacity = .75; noBtn.style.opacity = .75;
+
+      try{
+        await sendToGoogleForms({ name, status, guests });
+        statusEl.textContent = `Registrado ✅ ${name} • ${status}${guests !== "" ? ` • Acompanhantes: ${guests}` : ""}`;
+        toast("Presença enviada ✅");
+        openThanks({name, status, guests});
+      }catch(e){
+        localStorage.setItem("rsvp_" + EVENT_TITLE, JSON.stringify({ name, status, guests, at: new Date().toISOString() }));
+        statusEl.textContent = `Sem conexão: salvei neste aparelho • ${name} • ${status}`;
+        toast("Sem conexão. Salvei localmente.");
+        openThanks({name, status, guests});
+      }finally{
+        yesBtn.disabled = false; noBtn.disabled = false;
+        yesBtn.style.opacity = 1; noBtn.style.opacity = 1;
+      }
+    }
+
+    yesBtn.addEventListener("click", () => confirmRSVP("Confirmado 🎉"));
+    noBtn.addEventListener("click", () => confirmRSVP("Não poderei ir 😢"));
+  </script>
+</body>
+</html>
