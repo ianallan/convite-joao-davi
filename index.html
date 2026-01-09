@@ -3,313 +3,198 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b1a12" />
+  <meta name="theme-color" content="#0f2b1f" />
   <title>Convite • 1 ano do João Davi</title>
 
   <style>
     :root{
-      /* Safari / Jungle (moderno) */
-      --bg0:#06120c;
-      --bg1:#0b1a12;
-      --card: rgba(12, 28, 19, .78);
-      --glass: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.12);
-      --txt:#f7f2e6;
-      --muted:#d4c9b2;
+      /* Safari clean / infantil */
+      --bg1:#f7f3e8;   /* areia clara */
+      --bg2:#ffffff;   /* branco */
+      --card:#ffffff;
+      --txt:#1b2b22;
+      --muted:#5b6b63;
 
-      --leaf:#2f7a3a;
+      --leaf:#2f7a3a;  /* verde */
       --leaf2:#1f5b2a;
-      --gold:#d2a94a;
-      --sand:#d9c9a3;
+      --gold:#d2a94a;  /* dourado */
+      --line: rgba(27,43,34,.12);
 
-      --radius:24px;
-      --shadow: 0 22px 70px rgba(0,0,0,.55);
+      --radius:18px;
+      --shadow: 0 12px 28px rgba(0,0,0,.08);
     }
 
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
+    *{box-sizing:border-box}
     body{
       margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       color:var(--txt);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background:
-        radial-gradient(1200px 900px at 10% -10%, rgba(47,122,58,.55) 0%, transparent 60%),
-        radial-gradient(900px 700px at 110% 15%, rgba(210,169,74,.33) 0%, transparent 55%),
-        radial-gradient(900px 650px at 60% 115%, rgba(217,201,163,.18) 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
+        radial-gradient(900px 600px at 15% 0%, rgba(47,122,58,.10) 0%, transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(210,169,74,.12) 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
     }
 
-    /* textura sutil + “folhagem” */
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      background:
-        repeating-linear-gradient(35deg, rgba(217,201,163,.06) 0 10px, rgba(0,0,0,0) 10px 22px),
-        radial-gradient(400px 300px at 15% 20%, rgba(47,122,58,.10), transparent 60%),
-        radial-gradient(420px 320px at 85% 25%, rgba(210,169,74,.10), transparent 60%),
-        radial-gradient(520px 420px at 50% 95%, rgba(217,201,163,.06), transparent 60%);
-      opacity:.28;
-      pointer-events:none;
-      mix-blend-mode: overlay;
-    }
+    .wrap{max-width:860px; margin:0 auto; padding:22px 14px 60px}
 
-    .wrap{ max-width:1100px; margin:0 auto; padding:26px 16px 70px; position:relative }
-
+    /* Cabeçalho */
     .hero{
+      background: #fff;
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      padding:22px 18px;
       position:relative;
-      border-radius: calc(var(--radius) + 8px);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
       overflow:hidden;
-      background:
-        linear-gradient(135deg, rgba(47,122,58,.18), rgba(217,201,163,.10)),
-        radial-gradient(700px 500px at 0% 0%, rgba(47,122,58,.25), transparent 65%),
-        radial-gradient(700px 500px at 100% 0%, rgba(210,169,74,.16), transparent 65%);
-      padding:44px 20px;
     }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-80px -80px auto auto;
+      width:260px; height:260px;
+      background: radial-gradient(circle at 35% 35%, rgba(47,122,58,.18), transparent 60%);
+      border-radius:50%;
+    }
+    .hero:after{
+      content:"";
+      position:absolute; inset:auto auto -90px -90px;
+      width:300px; height:300px;
+      background: radial-gradient(circle at 35% 35%, rgba(210,169,74,.16), transparent 60%);
+      border-radius:50%;
+    }
+    .hero-inner{position:relative}
 
-    /* blobs animados (moderninho) */
-    .blob{
-      position:absolute; border-radius:999px; filter: blur(38px);
-      opacity:.40; pointer-events:none;
-      transform: translateZ(0);
-      animation: floaty 10s ease-in-out infinite;
-    }
-    .blob.b1{ width:520px; height:520px; left:-220px; top:-280px; background:rgba(47,122,58,.75) }
-    .blob.b2{ width:520px; height:520px; right:-260px; top:-260px; background:rgba(210,169,74,.55); animation-duration: 12s }
-    .blob.b3{ width:420px; height:420px; left:20%; bottom:-320px; background:rgba(217,201,163,.22); animation-duration: 14s }
-    @keyframes floaty{
-      0%,100%{ transform: translate3d(0,0,0) }
-      50%{ transform: translate3d(0,18px,0) }
-    }
-
-    .hero-inner{ position:relative; display:grid; gap:18px; align-items:start }
-    @media (min-width:900px){
-      .hero-inner{ grid-template-columns: 1.25fr .75fr; gap:22px }
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      color:var(--muted);
-      letter-spacing:.14em;
-      text-transform:uppercase;
+      border:1px solid rgba(47,122,58,.25);
+      background: rgba(47,122,58,.08);
+      color: var(--leaf2);
       font-size:12px;
-      width:fit-content;
+      font-weight:700;
+      letter-spacing:.04em;
     }
 
     h1{
-      margin:8px 0 8px;
-      font-size:44px;
-      line-height:1.05;
-      letter-spacing:-0.02em;
+      margin:10px 0 6px;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:-.02em;
     }
-    @media (max-width:520px){
-      h1{ font-size:36px }
-    }
-
     .subtitle{
       margin:0;
       color:var(--muted);
-      font-size:16px;
-      max-width:70ch;
+      font-size:15px;
     }
 
-    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px }
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     .chip{
+      display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
       border-radius:999px;
-      background:rgba(255,255,255,.07);
-      border:1px solid var(--border);
+      border:1px solid var(--line);
+      background:#fff;
       color:var(--muted);
       font-size:13px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
     }
 
-    .actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px }
+    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     .btn{
       cursor:pointer;
-      border:0;
-      border-radius:16px;
-      padding:12px 14px;
+      border:1px solid var(--line);
+      background:#fff;
       color:var(--txt);
       font-weight:800;
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--border);
-      transition: transform .06s ease, background .2s ease, box-shadow .2s ease;
+      padding:12px 14px;
+      border-radius:14px;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      user-select:none;
-      white-space:nowrap;
+      gap:8px;
+      transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
     }
-    .btn:hover{ background:rgba(255,255,255,.12) }
+    .btn:hover{ background: rgba(47,122,58,.06) }
     .btn:active{ transform: translateY(1px) }
 
     .btn.primary{
-      background: linear-gradient(135deg, rgba(47,122,58,.95), rgba(210,169,74,.55));
       border:0;
-      box-shadow: 0 14px 40px rgba(47,122,58,.18);
+      color:#fff;
+      background: linear-gradient(135deg, var(--leaf), rgba(210,169,74,.65));
+      box-shadow: 0 10px 22px rgba(47,122,58,.18);
     }
-    .btn.primary:hover{ box-shadow: 0 18px 55px rgba(47,122,58,.22) }
-    .btn.ghost{ background:rgba(255,255,255,.06) }
+    .btn.primary:hover{ box-shadow: 0 14px 28px rgba(47,122,58,.22) }
 
-    .sidecard{
-      align-self:stretch;
-      background: rgba(0,0,0,.14);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-    }
-    .sidecard h3{ margin:0 0 10px; font-size:16px }
-    .mini{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:10px; border-radius:16px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .mini b{ display:block }
-    .mini p{ margin:4px 0 0; color:var(--muted); font-size:13px }
-    .icon{
-      width:38px; height:38px; border-radius:14px;
-      display:grid; place-items:center;
-      background: rgba(47,122,58,.20);
-      border:1px solid rgba(47,122,58,.35);
-      flex:0 0 auto;
-      font-size:18px;
-    }
-
-    .grid{
-      display:grid; gap:16px; margin-top:16px;
-    }
-    @media (min-width:900px){
-      .grid{ grid-template-columns: 1fr 1fr }
+    /* Cards */
+    .grid{display:grid; gap:14px; margin-top:14px}
+    @media (min-width:820px){
+      .grid{grid-template-columns: 1.1fr .9fr}
     }
 
     .card{
-      background: var(--card);
-      border:1px solid var(--border);
+      background:var(--card);
+      border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding:18px;
-      backdrop-filter: blur(10px);
+      padding:16px;
     }
-    .card h2{ margin:0 0 10px; font-size:18px }
-    .muted{ color:var(--muted); font-size:13px }
-    .row{ display:flex; flex-wrap:wrap; gap:10px }
+    .card h2{margin:0 0 10px; font-size:16px}
+    .muted{color:var(--muted); font-size:13px; margin:0}
 
     .field{
       width:100%;
       padding:12px 14px;
-      border-radius:16px;
-      background:rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.12);
-      color:var(--txt);
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
       outline:none;
-      transition: border-color .2s ease;
+      font-size:14px;
     }
-    .field:focus{ border-color: rgba(210,169,74,.55) }
-    .field.small{ width: 220px }
-    @media (max-width:520px){
-      .field.small{ width:100% }
-    }
+    .field:focus{ border-color: rgba(47,122,58,.45) }
 
-    .timer{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:10px;
-      margin-top:10px;
-    }
-    .tbox{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:18px;
+    .row{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .field.small{width: 220px}
+    @media (max-width:520px){ .field.small{width:100%} }
+
+    .divider{height:1px; background:var(--line); border:0; margin:12px 0}
+
+    /* “Presentes” */
+    .gift{
+      display:flex; gap:10px; align-items:flex-start;
       padding:12px;
-      text-align:center;
+      border:1px dashed rgba(47,122,58,.35);
+      border-radius:16px;
+      background: rgba(47,122,58,.05);
     }
-    .tbox .num{ font-size:26px; font-weight:950; letter-spacing:-.02em }
-    .tbox .lab{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted) }
-
-    iframe{ width:100%; height:330px; border:0; border-radius:18px }
-
-    .gallery{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:10px;
+    .gift .icon{
+      width:38px; height:38px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background: rgba(210,169,74,.18);
+      border:1px solid rgba(210,169,74,.35);
+      flex: 0 0 auto;
+      font-size:18px;
     }
-    @media (max-width:520px){ .gallery{ grid-template-columns:repeat(2,1fr) } }
-    .photo{
-      border-radius:18px;
-      overflow:hidden;
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.05);
-      transform: translateZ(0);
-      transition: transform .12s ease;
-    }
-    .photo:hover{ transform: scale(1.01) }
-    .photo img{ width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:1/1 }
+    .gift ul{margin:6px 0 0 18px; color:var(--muted); font-size:13px}
+    .gift li{margin:6px 0}
 
+    /* Mapa */
+    iframe{width:100%; height:310px; border:0; border-radius:16px}
+
+    /* Toast */
     .toast{
       position:fixed;
       left:50%;
-      bottom:18px;
+      bottom:16px;
       transform:translateX(-50%);
-      background: rgba(7,13,9,.92);
-      border:1px solid rgba(255,255,255,.12);
-      padding:12px 14px;
+      background:#0f2b1f;
+      color:#fff;
+      padding:11px 14px;
       border-radius:999px;
-      box-shadow: var(--shadow);
-      color:var(--txt);
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+      display:none;
       font-size:13px;
-      display:none;
-      z-index:80;
-    }
-
-    .modal{
-      position:fixed; inset:0;
-      background:rgba(0,0,0,.72);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:90;
-    }
-    .modal img{
-      max-width:min(1100px, 100%);
-      max-height:82vh;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow: 0 28px 90px rgba(0,0,0,.65);
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      background: rgba(47,122,58,.16);
-      border: 1px solid rgba(47,122,58,.35);
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 10px;
-      width: fit-content;
-    }
-
-    .divider{
-      height:1px; background:rgba(255,255,255,.10);
-      border:0; margin:14px 0;
+      z-index:50;
     }
   </style>
 </head>
@@ -317,140 +202,87 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="blob b1"></div>
-      <div class="blob b2"></div>
-      <div class="blob b3"></div>
-
       <div class="hero-inner">
-        <div>
-          <div class="kicker">🦁🌿 Convite • Tema Safari</div>
-          <h1>Aniversário de 1 ano do João Davi</h1>
-          <p class="subtitle">
-            Prepare-se para uma aventura na selva! 🐘🦒🐒<br>
-            Vamos comemorar 1 aninho do João Davi — sua presença vai deixar o dia ainda mais especial 💚
-          </p>
+        <div class="badge">🦁🌿 Tema Safari</div>
+        <h1>1 aninho do João Davi</h1>
+        <p class="subtitle">Vamos comemorar esse dia especial com uma aventura na selva! 🐘🦒</p>
 
-          <div class="chips">
-            <div class="chip">📅 <span id="eventDateText"></span></div>
-            <div class="chip">🕔 <span id="eventTimeText"></span></div>
-            <div class="chip">📍 <span id="eventPlaceText"></span></div>
-          </div>
-
-          <div class="actions">
-            <button class="btn primary" id="scrollRsvp">✅ Confirmar presença</button>
-            <a class="btn ghost" id="openMaps" target="_blank" rel="noreferrer">🗺️ Abrir no Maps</a>
-            <button class="btn ghost" id="toggleMusic">▶︎ Música</button>
-          </div>
-
-          <div class="pill">💡 Dica: toque em “Música” para liberar o áudio (celular bloqueia autoplay).</div>
+        <div class="chips">
+          <div class="chip">📅 <span id="eventDateText"></span></div>
+          <div class="chip">🕔 <span id="eventTimeText"></span></div>
+          <div class="chip">📍 <span id="eventPlaceText"></span></div>
         </div>
 
-        <aside class="sidecard">
-          <h3>🧭 Detalhes rápidos</h3>
-
-          <div class="mini">
-            <div class="icon">🎈</div>
-            <div>
-              <b>1 aninho!</b>
-              <p>Uma comemoração cheia de fofura e safari vibes 🌿</p>
-            </div>
-          </div>
-
-          <div class="mini" style="margin-top:10px">
-            <div class="icon">🕔</div>
-            <div>
-              <b>Chegue no horário</b>
-              <p>Assim você aproveita tudo desde o início ✨</p>
-            </div>
-          </div>
-
-          <div class="mini" style="margin-top:10px">
-            <div class="icon">🧒</div>
-            <div>
-              <b>Confirme presença</b>
-              <p>Ajuda na organização da festinha 🙌</p>
-            </div>
-          </div>
-        </aside>
+        <div class="actions">
+          <button class="btn primary" id="scrollRsvp">✅ Confirmar presença</button>
+          <a class="btn" id="openMaps" target="_blank" rel="noreferrer">🗺️ Abrir no Maps</a>
+        </div>
       </div>
     </section>
 
     <div class="grid">
-      <section class="card">
-        <h2>⏳ Contagem regressiva</h2>
-        <div class="timer">
-          <div class="tbox"><div class="num" id="d">0</div><div class="lab">dias</div></div>
-          <div class="tbox"><div class="num" id="h">00</div><div class="lab">horas</div></div>
-          <div class="tbox"><div class="num" id="m">00</div><div class="lab">min</div></div>
-          <div class="tbox"><div class="num" id="s">00</div><div class="lab">seg</div></div>
-        </div>
-        <p class="muted" id="countdownHint" style="margin-top:10px"></p>
-      </section>
-
+      <!-- RSVP -->
       <section class="card" id="rsvp">
-        <h2>✅ Confirmar presença</h2>
-        <p class="muted">Preencha rapidinho — a confirmação vai direto para nossa planilha (Google Sheets).</p>
+        <h2>✅ Confirmação de presença</h2>
+        <p class="muted">Preencha rapidinho para ajudar na organização 💚</p>
 
-        <input class="field" id="guestName" placeholder="Seu nome (obrigatório)" autocomplete="name" />
-
-        <div class="row" style="margin-top:10px">
-          <input class="field small" id="guestCount" type="number" min="0" placeholder="Acompanhantes (opcional)" inputmode="numeric" />
+        <div style="margin-top:10px">
+          <input class="field" id="guestName" placeholder="Seu nome (obrigatório)" autocomplete="name" />
         </div>
 
-        <div class="row" style="margin-top:12px">
+        <div class="row">
+          <input class="field small" id="guestCount" type="number" min="0" inputmode="numeric" placeholder="Acompanhantes (opcional)" />
+        </div>
+
+        <div class="row">
           <button class="btn primary" id="btnYes">Confirmado 🎉</button>
           <button class="btn" id="btnNo">Não poderei ir 😢</button>
         </div>
 
         <hr class="divider" />
-
         <p class="muted" id="rsvpStatus">Nenhuma resposta enviada ainda.</p>
+      </section>
+
+      <!-- Presentes -->
+      <section class="card">
+        <h2>🎁 Sugestões de presente</h2>
+
+        <div class="gift">
+          <div class="icon">🎈</div>
+          <div>
+            <p class="muted" style="margin:0">
+              Se quiser presentear, aqui vão algumas sugestões (bem simples):
+            </p>
+            <ul>
+              <li><b>Roupas:</b> tamanho <b>3 anos</b></li>
+              <li><b>Sapato/Tênis:</b> número <b>19</b></li>
+              <li><b>Brinquedos:</b> educativos, blocos de montar, livrinhos</li>
+              <li><b>Safari:</b> bichinhos, pelúcias, quebra-cabeça</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:10px">
+          O mais importante é sua presença 💚
+        </p>
       </section>
     </div>
 
-    <section class="card" style="margin-top:16px">
-      <h2>🗺️ Local</h2>
-      <p class="muted" style="margin-top:-6px">
-        Espaço Ana Vitória – Colina Park
-      </p>
-
-      <iframe
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Espa%C3%A7o%20Ana%20Vit%C3%B3ria%20-%20Colina%20Park&output=embed">
-      </iframe>
-    </section>
-
-    <section class="card" style="margin-top:16px">
-      <h2>📸 Galeria</h2>
-      <p class="muted" style="margin-top:-6px">
-        Troque estas imagens pelas fotos do João Davi (ou coloque arquivos em <b>/images</b>).
-      </p>
-
-      <div class="gallery" id="gallery" style="margin-top:12px">
-        <!-- Substitua pelos seus links de fotos (ou /images/1.jpg etc.) -->
-        <div class="photo"><img src="https://picsum.photos/800?1" alt="foto 1"></div>
-        <div class="photo"><img src="https://picsum.photos/800?2" alt="foto 2"></div>
-        <div class="photo"><img src="https://picsum.photos/800?3" alt="foto 3"></div>
-        <div class="photo"><img src="https://picsum.photos/800?4" alt="foto 4"></div>
-        <div class="photo"><img src="https://picsum.photos/800?5" alt="foto 5"></div>
-        <div class="photo"><img src="https://picsum.photos/800?6" alt="foto 6"></div>
+    <!-- Local -->
+    <section class="card" style="margin-top:14px">
+      <h2>📍 Local</h2>
+      <p class="muted" style="margin-top:-2px">Espaço Ana Vitória – Colina Park</p>
+      <div style="margin-top:10px">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Espa%C3%A7o%20Ana%20Vit%C3%B3ria%20-%20Colina%20Park&output=embed">
+        </iframe>
       </div>
-
-      <div class="pill" style="margin-top:12px">🦒 Dica: 6 a 12 fotos deixam a galeria bem bonita.</div>
     </section>
   </div>
-
-  <!-- Música (coloque um arquivo music.mp3 na mesma pasta do index.html) -->
-  <audio id="bgm" loop>
-    <source src="music.mp3" type="audio/mpeg" />
-  </audio>
 
   <div class="toast" id="toast"></div>
-
-  <div class="modal" id="modal" aria-hidden="true">
-    <img id="modalImg" alt="Foto ampliada">
-  </div>
 
   <script>
     // ================== CONFIG DO EVENTO ==================
@@ -460,10 +292,10 @@
     const MAPS_LINK = "https://maps.app.goo.gl/p1Txpcy7HsGN2Vg59";
 
     // ================== GOOGLE FORMS (SEU FORM) ==================
-    const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSe6h7nrF_Ghlju65QoBiVRItkUcpKEiya2-2UDF_2AgCWGbrQ/formResponse";
-    const ENTRY_NAME  = "entry.1258025730";
-    const ENTRY_STATUS= "entry.29069718";
-    const ENTRY_GUESTS= "entry.316692936"; // acompanhantes (opcional)
+    const FORM_ACTION  = "https://docs.google.com/forms/d/e/1FAIpQLSe6h7nrF_Ghlju65QoBiVRItkUcpKEiya2-2UDF_2AgCWGbrQ/formResponse";
+    const ENTRY_NAME   = "entry.1258025730";
+    const ENTRY_STATUS = "entry.29069718";
+    const ENTRY_GUESTS = "entry.316692936"; // acompanhantes (opcional)
     // =============================================================
 
     // ---------- UI helpers ----------
@@ -472,7 +304,7 @@
       el.textContent = msg;
       el.style.display = "block";
       clearTimeout(window.__t);
-      window.__t = setTimeout(() => el.style.display = "none", 2800);
+      window.__t = setTimeout(() => el.style.display = "none", 2600);
     };
 
     // ---------- Header fill ----------
@@ -481,74 +313,18 @@
     document.getElementById("eventTimeText").textContent =
       new Date(EVENT_DATETIME_ISO).toLocaleTimeString("pt-BR", {hour:"2-digit", minute:"2-digit"});
     document.getElementById("eventPlaceText").textContent = EVENT_PLACE;
-
     document.getElementById("openMaps").href = MAPS_LINK;
 
     document.getElementById("scrollRsvp").addEventListener("click", () => {
       document.getElementById("rsvp").scrollIntoView({behavior:"smooth", block:"start"});
     });
 
-    // ---------- Music ----------
-    const bgm = document.getElementById("bgm");
-    const toggleMusicBtn = document.getElementById("toggleMusic");
-    let playing = false;
-
-    toggleMusicBtn.addEventListener("click", async () => {
-      try{
-        if(!playing){
-          await bgm.play();
-          playing = true;
-          toggleMusicBtn.textContent = "❚❚ Música";
-          toast("Música ligada 🎵");
-        } else {
-          bgm.pause();
-          playing = false;
-          toggleMusicBtn.textContent = "▶︎ Música";
-          toast("Música pausada");
-        }
-      }catch(e){
-        toast("Toque novamente para permitir áudio no navegador.");
-      }
-    });
-
-    // ---------- Countdown ----------
-    const dEl = document.getElementById("d");
-    const hEl = document.getElementById("h");
-    const mEl = document.getElementById("m");
-    const sEl = document.getElementById("s");
-    const hint = document.getElementById("countdownHint");
-
-    const tick = () => {
-      const now = new Date();
-      const target = new Date(EVENT_DATETIME_ISO);
-      const diff = target - now;
-
-      if(diff <= 0){
-        dEl.textContent = 0; hEl.textContent = "00"; mEl.textContent = "00"; sEl.textContent = "00";
-        hint.textContent = "Chegou o grande dia! 🦁✨";
-        return;
-      }
-
-      const sec = Math.floor(diff/1000);
-      const days = Math.floor(sec / 86400);
-      const hrs = Math.floor((sec % 86400) / 3600);
-      const mins = Math.floor((sec % 3600) / 60);
-      const secs = sec % 60;
-
-      dEl.textContent = days;
-      hEl.textContent = String(hrs).padStart(2,"0");
-      mEl.textContent = String(mins).padStart(2,"0");
-      sEl.textContent = String(secs).padStart(2,"0");
-
-      hint.textContent = `Faltam ${days} dia(s) para a nossa aventura safari 🌿`;
-    };
-    tick();
-    setInterval(tick, 1000);
-
     // ---------- RSVP -> Google Forms ----------
     const nameInput = document.getElementById("guestName");
     const guestsInput = document.getElementById("guestCount");
     const statusEl = document.getElementById("rsvpStatus");
+    const yesBtn = document.getElementById("btnYes");
+    const noBtn = document.getElementById("btnNo");
 
     function sanitizeGuests(v){
       if(v === "" || v == null) return "";
@@ -563,7 +339,7 @@
       fd.append(ENTRY_STATUS, status);
       if (ENTRY_GUESTS) fd.append(ENTRY_GUESTS, guests);
 
-      // mode:no-cors → o Forms registra mesmo sem retornar resposta legível
+      // mode:no-cors: o Forms registra mesmo sem retorno legível
       await fetch(FORM_ACTION, { method:"POST", mode:"no-cors", body: fd });
     }
 
@@ -574,21 +350,17 @@
         nameInput.focus();
         return;
       }
-
       const guests = sanitizeGuests(guestsInput.value);
 
-      // UX: desabilita botões enquanto envia
-      const yesBtn = document.getElementById("btnYes");
-      const noBtn = document.getElementById("btnNo");
       yesBtn.disabled = true; noBtn.disabled = true;
-      yesBtn.style.opacity = .7; noBtn.style.opacity = .7;
+      yesBtn.style.opacity = .75; noBtn.style.opacity = .75;
 
       try{
         await sendToGoogleForms({ name, status, guests });
         statusEl.textContent = `Registrado ✅ ${name} • ${status}${guests !== "" ? ` • Acompanhantes: ${guests}` : ""}`;
-        toast("Presença enviada ✅ Obrigado!");
+        toast("Presença enviada ✅");
       }catch(e){
-        // fallback local (caso offline/bloqueio)
+        // fallback local
         localStorage.setItem("rsvp_" + EVENT_TITLE, JSON.stringify({ name, status, guests, at: new Date().toISOString() }));
         statusEl.textContent = `Sem conexão: salvei neste aparelho • ${name} • ${status}`;
         toast("Sem conexão. Salvei localmente.");
@@ -598,32 +370,8 @@
       }
     }
 
-    document.getElementById("btnYes").addEventListener("click", () => confirmRSVP("Confirmado 🎉"));
-    document.getElementById("btnNo").addEventListener("click", () => confirmRSVP("Não poderei ir 😢"));
-
-    // ---------- Gallery modal ----------
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-
-    document.getElementById("gallery").addEventListener("click", (e) => {
-      const img = e.target.closest("img");
-      if(!img) return;
-      modalImg.src = img.src;
-      modal.style.display = "flex";
-      modal.setAttribute("aria-hidden", "false");
-    });
-    modal.addEventListener("click", () => {
-      modal.style.display = "none";
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-    });
-
-    // Esc fecha modal
-    window.addEventListener("keydown", (e) => {
-      if(e.key === "Escape" && modal.style.display === "flex"){
-        modal.click();
-      }
-    });
+    yesBtn.addEventListener("click", () => confirmRSVP("Confirmado 🎉"));
+    noBtn.addEventListener("click", () => confirmRSVP("Não poderei ir 😢"));
   </script>
 </body>
 </html>
